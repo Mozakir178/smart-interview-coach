@@ -60,3 +60,15 @@
 * [ ] Domain setup and testing
 
 ---
+
+smart-interview-coach/
+├── client/              # React Frontend (Vite + Tailwind)
+├── server/              # Node.js + Express Backend
+│   ├── controllers/
+│   ├── routes/
+│   ├── models/
+│   ├── config/
+│   ├── utils/
+│   ├── middleware/
+│   └── index.js         # Entry point
+└── README.md
