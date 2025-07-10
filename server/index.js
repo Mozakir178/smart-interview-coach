@@ -5,7 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import verifyToken from "./middleware/authMiddleware.js";
-
+import aiRoutes from "./routes/aiRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -13,6 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
+app.use("/api/ai", aiRoutes);
 
 
 app.get("/api/private", verifyToken, (req, res) => {

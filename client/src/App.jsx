@@ -1,14 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import PrivateRoute from "./components/PrivateRoute";
+
+const Dashboard = () => <h1 className="text-center text-2xl p-4">🎯 Dashboard (Protected)</h1>;
 
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">✅ Tailwind is working!</h1>
-    </div>
-  )
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Signup />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          } />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  );
 }
 
 export default App;
